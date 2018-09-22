@@ -1,26 +1,94 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ルーム作成</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./javascripts/getRoomName.js"></script>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <header class="site-header">
-      <p class="site-logo"></p>
-<!--
-      <nav class="gnav">
-          <ul class="gnav__menu">
-              <li class="gnav__menu__item"><a href="">About</a></li>
-              <li class="gnav__menu__item"><a href="">Works</a></li>
-              <li class="gnav__menu__item"><a href="">Recruit</a></li>
-              <li class="gnav__menu__item"><a href="">News</a></li>
-              <li class="gnav__menu__item"><a href="">Contact</a></li>
-          </ul>
-      </nav>!-->
-    </header>
+    <!-- script we made -->
+    <script type="text/javascript" src="javascript/meeting_event.js"></script>
+    <!-- <script type="text/javascript" src="javascript/meeting_user.js"></script> -->
+    <!-- socket io -->
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 
+    <head>
+    <title>会議中</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='stylesheets/meeting.css' />   
+  </head>
+  
+    <header class="site-header">
+      <p class="site-logo">会議促進システム</p>
+    </header>
+    <body>
+      
+    <!-- <text >会議名<%= title %>が進行中</text>
+    <p>現在 <%= title %>名が参加中</text> -->
+    <div id = top></div>
+    <div id = messages></div>
+
+    <script>
+        var message='test';
+        var amount='発話量';
+        var confference ='現在会議中です';
+        var participant =0;
+
+        createtitle();
+
+        create_user();
+        create_user();
+
+        changetext(1);
+        
+        function createtitle(){
+          var top_div = document.getElementById("top");
+          text=''
+          text+='<div class="now" id = "text">'+confference+'</div>';
+          text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
+          top_div.innerHTML += text;
+        }
+
+        function updatemember(){
+          var top_div = document.getElementById("top");
+          text=''
+          text+='<div class="now" id = "text">'+confference+'</div>';
+          text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
+          top_div.innerHTML = text;
+        }
+  
+        function create_user(){ 
+          var message_div = document.getElementById("messages");
+          text=''
+          text+='<div class="chat-box" id = '+participant+'>';
+          text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+          text+='<div class="chat-area">';
+          text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
+          text+='<div class="speak-amount" id = "speak-amount">'+amount;
+          text+='<div class="meter"><meter max="500" low="20" high="40" value="100">';
+          text+='</div>';
+          text+='</div>';
+          text+='</div>';
+          message_div.innerHTML += text;
+          console.log("user created");
+          participant+=1;
+          updatemember();
+        }
+
+        function changetext(id){
+          var id = "text"+id;
+          var txt = "かわった"
+          console.log(document.getElementById(id));
+          // console.log(document.getElementsByClassName("chat-hukidashi").text)
+          // document.getElementById(id).getElementsByClassName("chat-hukidashi").innerHTML = txt;
+          $("id"+".chat-hukidashi").css('background-color', 'green');
+          console.log("cahnge text")
+        }
+        
+        function click(){
+          console.log("clicked")
+          changetext(1);
+        } 
+  
+      </script>
+   
+    <INPUT type="button" value="Test用ボタン" style="background:#FFFFFF" onClick="click()">
+    
     <footer>
       <address>TeamA Bright Light</address>
       <address>KONICA MINOLTA Hackathon.</address>

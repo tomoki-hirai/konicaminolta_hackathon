@@ -65,7 +65,7 @@ router.post('/myturn',function(req,res,err){
     res.send(err);
   } else {
     res.send('success');
-    console.log(req.body);
+    console.log(req);
   }
 })
 

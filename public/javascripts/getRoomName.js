@@ -26,6 +26,7 @@ jQuery(function()
     console.log("会議名:"+roomName)
     //JSON一覧とユーザー情報を取得しログ出力
     //sendinfo(roomName,path)
+    document.getElementById('room_name').innerHTML = roomName;
 
 })
 

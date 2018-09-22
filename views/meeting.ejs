@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>会議中</title>
     <!-- script we made -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/getRoomName.js"></script>
     <script type="text/javascript" src="javascript/meeting_event.js"></script>
     <!-- <script type="text/javascript" src="javascript/meeting_user.js"></script> -->
     <!-- socket io -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-
-    <head>
-    <title>会議中</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='stylesheets/meeting.css' />   
+    <link rel='stylesheet' href='stylesheets/meeting.css' />
   </head>
-  
+
     <header class="site-header">
-      <p class="site-logo">会議促進システム</p>
+      <p id="room_name" class="site-logo"></p>
     </header>
     <body>
-      
+
     <!-- <text >会議名<%= title %>が進行中</text>
     <p>現在 <%= title %>名が参加中</text> -->
     <div id = top></div>
@@ -58,8 +59,8 @@
           text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
           top_div.innerHTML = text;
         }
-  
-        function create_user(){ 
+
+        function create_user(){
           var message_div = document.getElementById("messages");
           text=''
           text+='<div class="chat-box" id = '+participant+'>';

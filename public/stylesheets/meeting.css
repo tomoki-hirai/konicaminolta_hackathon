@@ -1,58 +1,84 @@
-body {
-  padding: 50px;
+/***********************************
+チャット風レイアウト
+************************************/
+body{
   background-color: white;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: rgb(255, 221, 0);
+/*画像左側のチャット*/
+.chat-box {
+    width: 100%;
+    height: auto;
+    overflow: hidden; 
+    margin-bottom: 20px;
+}
+.chat-face {
+    float: left;
+    margin-right: -120px;
+}
+.chat-face img{
+　　width: 90px;
+    height: 90px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 4px #ddd;
+}
+.chat-area {
+    width: 100%;
+    float: right;
+}
+.chat-hukidashi {
+    display: inline-block;
+    padding: 15px 20px;
+    margin-left: 120px;
+    margin-top: 8px;
+    border-radius: 10px;
+    position: relative; 
+    background-color: #D9F0FF; 
+}
+.chat-hukidashi p{
+    margin-bottom: 0px;
+}
+.chat-hukidashi:after {
+    content: "";
+    position: absolute;
+    top: 35px; left: -10px;
+    margin-top: -10px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #D9F0FF transparent transparent;
 }
 
-.person user_name{
-  position: absolute;
-  align-self: auto;
+/*スマホの時は画像を小さく*/
+@media screen and (max-width: 440px){
+    /*画像左側のチャット*/
+    .chat-face {
+        float: left;
+        margin-right: -80px;
+    }
+    .chat-face img{
+         width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 4px #ddd;
+    }
+    .chat-hukidashi {
+        display: inline-block;
+        padding: 10px 10px;
+        margin-left: 80px;
+        margin-top: 0px;
+        border-radius: 10px;
+        position: relative;
+        background-color: #D9F0FF;
+    }
 }
-
-.person meter{
-  position: relative;
+.chat-div {
+    font-size:4em;
 }
-
-.persin.speak_amount{
-  position: relative;
-}
-
-.balloon {
-  position: absolute;
-  margin-bottom: 2em;
-  }
-  .balloon:before,.balloon:after {
-  clear: both;
-  content: "";
-  display: block;
-  }
-  .balloon figure {
-  width: 60px;
-  height: 60px;
-  }
-  .balloon-image-left {
-  float: left;
-  margin-right: 20px;
-  }
-  .balloon-text-right {
-  position: absolute;
-  padding: 10px;
-  border: 1px solid rgb(170, 170, 170);
-  border-radius: 10px;
-  background-color: aquamarine;
-  max-width: -webkit-calc(100% - 80px);
-  max-width: calc(100% - 80px);
-  display: inline-block;
-  }
-  .balloon-text-right {
-  float: left;
-  }
-  div,p {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  }
+form { background-color: white; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+form button { width: 7%; background: rgb(130, 224, 255); border: none; padding: 10px; }/***********************************

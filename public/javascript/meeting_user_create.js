@@ -1,19 +1,11 @@
-function meeting_user_create(idx){
-    
-    var element = document.getElementById("title");
-    element.innerHTML = idx;
-    // create person class
-    var person = document.createElement('div');
-        person.className="person"
-    // create name
-    var 
+function create_user(idx){
 
-    // create icon
-    var image = new Image();
-    image.src = "./img/icon";
-    image.className="img";
-    image.align="left"
-
-    //create 
+        text+='<div class="person">';
+        text+='<div class="user-name" id = "name">'+message+'</div>';
+        text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+        text+='<div class="chat-area">';
+        text+='<div class="chat-hukidashi" id = "text">'+message+'</div>';
+        text+='</div>';
+        text+='</div>';
     
 };

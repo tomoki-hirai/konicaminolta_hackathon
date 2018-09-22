@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose')
 const Speaking = require('../module/models/speaking');
 const constants = require('../module/constants');
-var host_url = constants.aws_ip;
+var mongo_db_url = constants.mongo_db_url;
 // const host_url = "localhost";
 // const model = require('./model');
 // const Volume = model.Volume;
@@ -20,7 +20,7 @@ router.get('/speaking', function(req, res, next) {
     room_id = req.query.room_id;
   }
   // res.render('meeting', { title: 'Express' });
-  mongoose.connect('mongodb://' + host_url + '/meetingDB',{ useNewUrlParser: true },function(err) {
+  mongoose.connect(mongo_db_url,{ useNewUrlParser: true },function(err) {
     if (err) throw err;
   });
   Speaking.find({})
@@ -43,7 +43,7 @@ router.get('/speaking', function(req, res, next) {
 // メッセージをpost
 router.post('/speaking',function(req,res){
   // console.log(req);
-  mongoose.connect('mongodb://' + host_url + '/meetingDB',{ useNewUrlParser: true },function(err) {
+  mongoose.connect(mongo_db_url,{ useNewUrlParser: true },function(err) {
     if (err) throw err;
   });
   console.log(req.body);

@@ -1,8 +1,123 @@
+
+/*************************************
+******************ページ全体の設定************
+*****************************************/
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin:0px;          /* ページ全体のmargin */
+  padding:-20px;         /* ページ全体のpadding */
+  text-align:center;   /* 下記のautoに未対応用のセンタリング */
+  background-color: #000000;
+  color: #000000;
 }
 
-a {
-  color: #00B7FF;
+/*************************************
+******************タイトルバー設定************
+*****************************************/
+.head{
+  background-color: #313131;
+}
+.globalNav {
+    list-style: none;
+    overflow: hidden;
+}
+
+.globalNav li {
+    float: left;
+    border-right: 1px solid #DDD;
+}
+
+.globalNav li a {
+    font-size: 150%;
+    font-family: "Comic Sans MS";
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #AAA;
+}
+
+.globalNav li a span {
+    display: block;
+    margin: 3px 0 0 0;
+    color: #AAA;
+    text-transform: uppercase;
+    font-size: 80%;
+    letter-spacing: 1px;
+}
+
+.globalNav li a:hover {
+    background: #EEE;
+}
+
+.globalNav li.active a {
+    background: #333;
+    color: #EEE;
+}
+/*************************************
+******************ボタンーの設定************
+*****************************************/
+p.char{
+  color:#FFFFFF;
+}
+.square_btn {
+    font-size: 300%;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 12px 0 8px;
+    text-decoration: none;
+    color: #67c5ff;
+    transition: .4s;
+}
+
+.square_btn:before{
+   position: absolute;
+   content: '';
+   width: 100%;
+   height: 4px;
+   top:100%;
+   left: 0;
+   border-radius: 3px;
+   background:#67c5ff;
+   transition: .2s;
+}
+
+.square_btn:after{
+   position: absolute;
+   content: '';
+   width: 100%;
+   height: 4px;
+   top:0;
+   left: 0;
+   border-radius: 3px;
+   background:#67c5ff;
+   transition: .2s;
+}
+
+.square_btn:hover:before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
+}
+
+.square_btn:hover:after {
+    top: 3px;
+}
+/*************************************
+******************フッターの設定************
+*****************************************/
+footer{
+  position: fixed;
+  bottom: 0;
+    font-size: 180%;
+    font-family: "Comic Sans MS";
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #313131;
+}
+footer address{
+    color: #fff;
+    letter-spacing: 5px;
 }

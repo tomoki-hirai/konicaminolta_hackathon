@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
+<head lang="jp">
+	<meta charset="UTF-8">
+	<title>会議促進システム</title>
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
 <body>
-	<div id="header-fixed">
-				 <div id="title">
-				 </div>
-				 <div id="Hackathon">Team A BrightLight</br>KONICA MINOLTA Hackathon.
-				 </div>
-	</div>
-	<div id=padding></div>
-
-	<h1 id="title"></h1>
+  <div id="site-box">
+  <div class = "head">
+    <ul class="globalNav">
+      <li class="active">
+          <a href="#">
+              <strong>ホーム</strong>
+              <span>home</span>
+          </a>
+      </li>
+      <li onclick="location.href='LoveCheck.html'">
+          <a href="#">
+              <strong>プロファイル</strong>
+              <span>profile</span>
+          </a>
+      </li>
+      <li onclick="location.href='LoveChallenge.html'">
+          <a href="#">
+              <strong>履歴</strong>
+              <span>history</span>
+          </a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <p class="char">会議名<br>
+      <input type="text" id="meeting" size="30" maxlength="10" value="会議名を入力してください。"></p>
+    <a href="#" class="square_btn">START</a>
+  </div>
+  <footer>
+    <address>TeamA Bright Light</address>
+    <address>KONICA MINOLTA Hackathon.</address>
+  </footer>
 </body>
 </html>

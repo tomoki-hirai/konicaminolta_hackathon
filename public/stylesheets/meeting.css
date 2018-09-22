@@ -30,7 +30,7 @@ body{
 .chat-hukidashi {
     display: inline-block;
     padding: 15px 20px;
-    margin-left: 120px;
+    
     margin-top: 8px;
     border-radius: 10px;
     position: relative; 
@@ -50,6 +50,12 @@ body{
     border-style: solid;
     border-width: 10px 10px 10px 0;
     border-color: transparent #D9F0FF transparent transparent;
+}
+
+.speak-amount{
+    position: absolute;
+    margin-bottom: 0px;
+    margin-left: 100px;
 }
 
 /*スマホの時は画像を小さく*/

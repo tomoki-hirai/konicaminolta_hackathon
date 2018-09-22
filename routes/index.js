@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' });
-  res.sendfile('./views/Top.html');
+  res.render('top', { title: 'Express' });
+  // res.sendfile('./viewtop.ejs');
 });
 
 module.exports = router;

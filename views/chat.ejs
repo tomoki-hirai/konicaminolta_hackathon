@@ -26,6 +26,11 @@
         console.log('receive')
         insertMessage(1,msg.value);
       });
+
+      socket.on('myturn', function(msg){
+        console.log('myturn')
+        // insertMessage(1,msg.value);
+      });
       function insertMessage(id,message){
         var message_div = document.getElementById("messages");
         text=''

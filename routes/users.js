@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
         res.end('my 500 error! : ' + err);
         console.log(err);
       } else {
-        console.log('succes');
+        console.log('success');
         res.send(result);
       }
     });

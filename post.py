@@ -1,6 +1,7 @@
 import urllib.request, json
 
 if __name__ == '__main__':
+    # url = "http://ec2-13-231-129-201.ap-northeast-1.compute.amazonaws.com:3000/meeting/myturn"
     url = "http://localhost:3000/meeting/myturn"
     method = "POST"
     headers = {"Content-Type" : "application/json"}

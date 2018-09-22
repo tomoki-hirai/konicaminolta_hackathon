@@ -8,8 +8,6 @@ const host_url = "localhost";
 // const model = require('./model');
 // const Volume = model.Volume;
 
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('meeting', { title: 'Express' });
@@ -62,9 +60,13 @@ router.post('/speaking',function(req,res){
 })
 
 // メッセージをpost
-router.post('/myturn',function(req,res){
-  console.log(req.body);
-  res.send('success');
+router.post('/myturn',function(req,res,err){
+  if(err) {
+    res.send(err);
+  } else {
+    res.send('success');
+    console.log(req.body);
+  }
 })
 
 module.exports = router;

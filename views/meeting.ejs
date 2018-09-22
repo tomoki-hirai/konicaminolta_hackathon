@@ -43,6 +43,11 @@
         create_user();
         changetext(2,3);
 
+        socket.on('myturn', function(msg){
+          console.log('myturn')
+          changetext(0,1);
+      });
+
         function createtitle(){
           var top_div = document.getElementById("top");
           text=''

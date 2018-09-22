@@ -4,14 +4,19 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(255, 221, 0);
 }
 
 .person text#user_name{
-  position: relative;
+  position: absolute;
+  align-self: auto;
 }
 
 .person meter{
+  position: relative;
+}
+
+.persin.speak_amount{
   position: relative;
 }
 
@@ -35,8 +40,9 @@ a {
   .balloon-text-right {
   position: absolute;
   padding: 10px;
-  border: 1px solid #aaa;
+  border: 1px solid rgb(170, 170, 170);
   border-radius: 10px;
+  background-color: aquamarine;
   max-width: -webkit-calc(100% - 80px);
   max-width: calc(100% - 80px);
   display: inline-block;

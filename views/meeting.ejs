@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
     <script type="text/javascript" src="../public/javascript/meeting_event.js"></script>
-
-  <head>
+    <script type="text/javascript" src="../public/javascript/meeting_user_create.js"></script>
+  
+    <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/meeting.css' />
   </head>
+
   <body>
     <text id="confference">会議名<%= title %>が進行中</text>
-    <p>現在 <%= title %>名がMEETING中</text>
+    <p>現在 <%= title %>名が参加中</text>
 
     <div class="person">
-        <text id = "user_name" >Aさん</text>
-      <img src = "img/user.png" width = "90"height ="90"/>
-      
+      <text class = "user_name" >Aさん</text>   
+      <img class ="icon" src = "img/user.png"  width = "90"height ="90"/>
       <div class="balloon-text-right">
           <text id="sentence">しゃべりたい！</text>
-      </div>
-      <meter max="100" low="20" high="40" value="100"></meter>
+      
+    </div>
 
-     
+    <div class="speak_amout">
+      <text>発話量</text>
+      <meter max="100" low="20" high="40" value="100"></meter>
+    </div> 
+    
     </div>
 
   </body>

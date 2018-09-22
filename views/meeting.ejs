@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <script type="text/javascript" src="../public/javascript/meeting_event.js"></script>
-    <script type="text/javascript" src="../public/javascript/meeting_user_create.js"></script>
-  
-    <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/meeting.css' />
+  <head>
+    <title>ルーム作成</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
   <body>
-    <text id="confference">会議名<%= title %>が進行中</text>
-    <p>現在 <%= title %>名が参加中</text>
-
-    <div class="person">
-      <text class = "user_name" >Aさん</text>   
-      <img class ="icon" src = "img/user.png"  width = "90"height ="90"/>
-      <div class="balloon-text-right">
-          <text id="sentence">しゃべりたい！</text>
-      
+    <header class="site-header">
+      <p class="site-logo">会議促進システム</p>
+<!--
+      <nav class="gnav">
+          <ul class="gnav__menu">
+              <li class="gnav__menu__item"><a href="">About</a></li>
+              <li class="gnav__menu__item"><a href="">Works</a></li>
+              <li class="gnav__menu__item"><a href="">Recruit</a></li>
+              <li class="gnav__menu__item"><a href="">News</a></li>
+              <li class="gnav__menu__item"><a href="">Contact</a></li>
+          </ul>
+      </nav>!-->
+    </header>
+    <div class="outer">
+    <div class="inner">
+      <p class="char">会議名</p>
+      <input class="char" type="text" name="in01" size="30" maxlength="20" placeholder="会議名を入力ください">
+      <div class="create_btn">
+        <a href="/evalMeeting" class="square_btn">ルーム作成</a>
+      </div>
     </div>
-
-    <div class="speak_amout">
-      <text>発話量</text>
-      <meter max="100" low="20" high="40" value="100"></meter>
-    </div> 
-    
-    </div>
-
+  </div>
+    <footer>
+      <address>TeamA Bright Light</address>
+      <address>KONICA MINOLTA Hackathon.</address>
+    </footer>
   </body>
 </html>

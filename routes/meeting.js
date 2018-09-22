@@ -58,7 +58,13 @@ router.post('/speaking',function(req,res){
         console.log("write");
       }
   });
-  res.send('');
+  res.send('success');
+})
+
+// メッセージをpost
+router.post('/myturn',function(req,res){
+  console.log(req.body);
+  res.send('success');
 })
 
 module.exports = router;

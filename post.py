@@ -1,7 +1,7 @@
 import urllib.request, json
 
 if __name__ == '__main__':
-    url = "http://localhost:3000/meeting/speaking"
+    url = "http://localhost:3000/meeting/myturn"
     method = "POST"
     headers = {"Content-Type" : "application/json"}
 

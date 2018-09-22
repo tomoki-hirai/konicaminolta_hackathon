@@ -63,6 +63,7 @@ router.post('/speaking',function(req,res){
 router.post('/myturn',function(req,res,err){
   if(err) {
     res.send(err);
+    console.log(req)
   } else {
     res.send('success');
     console.log(req);

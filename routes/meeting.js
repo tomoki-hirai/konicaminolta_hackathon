@@ -3,12 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose')
 const Speaking = require('../module/models/speaking');
 const constants = require('../module/constants');
-// var host_url = constants.aws_ip;
-const host_url = "localhost";
+var host_url = constants.aws_ip;
+// const host_url = "localhost";
 // const model = require('./model');
 // const Volume = model.Volume;
-
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -58,7 +56,17 @@ router.post('/speaking',function(req,res){
         console.log("write");
       }
   });
-  res.send('');
+  res.send('success');
+})
+
+// メッセージをpost
+router.post('/myturn',function(req,res,err){
+  if(err) {
+    res.send(err);
+  } else {
+    res.send('success');
+    console.log(req.body);
+  }
 })
 
 module.exports = router;

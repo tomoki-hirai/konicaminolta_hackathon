@@ -5,55 +5,52 @@
 
 body {
   margin:0px;          /* ページ全体のmargin */
-  padding:-20px;         /* ページ全体のpadding */
+  padding:0px;         /* ページ全体のpadding */
   text-align:center;   /* 下記のautoに未対応用のセンタリング */
   background-color: #000000;
   color: #000000;
 }
 
 /*************************************
-******************タイトルバー設定************
+******************ヘッダー設定************
 *****************************************/
-.head{
-  background-color: #313131;
+.site-header{
+    background: #313131;
+    display: flex;
+    padding: 0px 0px;
+    position: fixed;
+    justify-content: space-between;
+    height: 10%;
+    width: 100%;
 }
-.globalNav {
-    list-style: none;
+.site-logo {
+    font-size: 200%;
+    font-family: "Century Gothic";
+    color: #fff;
+    width: auto;
+}
+.head_bar{
+  height: 20%;
+}
+.gnav__menu{
+    display: flex;
+}
+.gnav__menu__item{
+    margin-left: 20px;
+}
+.gnav__menu__item a{
+    color: #333;
+    text-decoration: none;
+}
+.hero{
+    max-height: 500px;
     overflow: hidden;
 }
-
-.globalNav li {
-    float: left;
-    border-right: 1px solid #DDD;
+.hero img{
+    height: auto;
+    width: 100%;
 }
 
-.globalNav li a {
-    font-size: 150%;
-    font-family: "Comic Sans MS";
-    display: block;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    color: #AAA;
-}
-
-.globalNav li a span {
-    display: block;
-    margin: 3px 0 0 0;
-    color: #AAA;
-    text-transform: uppercase;
-    font-size: 80%;
-    letter-spacing: 1px;
-}
-
-.globalNav li a:hover {
-    background: #EEE;
-}
-
-.globalNav li.active a {
-    background: #333;
-    color: #EEE;
-}
 /*************************************
 ******************ボタンーの設定************
 *****************************************/

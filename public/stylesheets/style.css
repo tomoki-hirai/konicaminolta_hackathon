@@ -17,17 +17,16 @@ body {
 .site-header{
     background: #313131;
     display: flex;
-    padding: 0px 0px;
-    position: fixed;
     justify-content: space-between;
-    height: 10%;
     width: 100%;
 }
 .site-logo {
-    font-size: 200%;
+    font-size: 100%;
     font-family: "Century Gothic";
     color: #fff;
     width: auto;
+    padding-top: -30px;
+    padding-bottom: -30px;
 }
 .head_bar{
   height: 20%;
@@ -54,9 +53,6 @@ body {
 /*************************************
 ******************ボタンーの設定************
 *****************************************/
-p.char{
-  color:#FFFFFF;
-}
 .square_btn {
     font-size: 300%;
     position: relative;
@@ -100,13 +96,35 @@ p.char{
 .square_btn:hover:after {
     top: 3px;
 }
+
+/*************************************
+******************文字，テキストボックス設定************
+*****************************************/
+p.char{
+  color:#FFFFFF;
+  font-size: 500%
+}
+input.char{
+      font-size: 200%;
+}
+.create_btn{
+  padding-top:5%;
+}
+.outer{
+  display: table;
+  width: 100%;
+}
+.inner{
+  display: table-cell;
+  vertical-align: middle;
+}
 /*************************************
 ******************フッターの設定************
 *****************************************/
 footer{
   position: fixed;
   bottom: 0;
-    font-size: 180%;
+    font-size: 130%;
     font-family: "Comic Sans MS";
     width: 100%;
     text-align: center;

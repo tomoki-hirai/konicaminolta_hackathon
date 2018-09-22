@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.person text#user_name{
+  position: relative;
+}
+
+.person meter{
+  position: relative;
+}
+
+.balloon {
+  position: absolute;
+  margin-bottom: 2em;
+  }
+  .balloon:before,.balloon:after {
+  clear: both;
+  content: "";
+  display: block;
+  }
+  .balloon figure {
+  width: 60px;
+  height: 60px;
+  }
+  .balloon-image-left {
+  float: left;
+  margin-right: 20px;
+  }
+  .balloon-text-right {
+  position: absolute;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  max-width: -webkit-calc(100% - 80px);
+  max-width: calc(100% - 80px);
+  display: inline-block;
+  }
+  .balloon-text-right {
+  float: left;
+  }
+  div,p {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }

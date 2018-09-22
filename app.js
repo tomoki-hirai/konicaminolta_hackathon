@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var meetingRouter = require('./routes/meeting');
 var chatRouter = require('./routes/chat');
-var evalMeetingRouter = require('./routes/evalMeeting');
+var createMeetingRouter = require('./routes/createMeeting');
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.use('/users', usersRouter);
 app.use('/meeting', meetingRouter);
 app.use('/chat', chatRouter);
 
-app.use('/evalMeeting', evalMeetingRouter);
+app.use('/createMeeting', createMeetingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

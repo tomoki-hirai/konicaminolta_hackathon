@@ -3,8 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose')
 const Speaking = require('../module/models/speaking');
 const constants = require('../module/constants');
-// var host_url = constants.aws_ip;
-const host_url = "localhost";
+var host_url = constants.aws_ip;
+// const host_url = "localhost";
 // const model = require('./model');
 // const Volume = model.Volume;
 

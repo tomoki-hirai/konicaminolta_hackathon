@@ -22,6 +22,7 @@
     <p>現在 <%= title %>名が参加中</text> -->
     <div id = top></div>
     <div id = messages></div>
+    <div id = total_speak></div>
 
     <script>
         var message='test';
@@ -34,8 +35,13 @@
         create_user();
         create_user();
 
-        changetext(1);
-        
+        changetext(1,1);
+        changetext(0,2);
+        // change_meter(0,400);
+        create_user();
+        changetext(2,3);
+
+
         function createtitle(){
           var top_div = document.getElementById("top");
           text=''
@@ -56,11 +62,12 @@
           var message_div = document.getElementById("messages");
           text=''
           text+='<div class="chat-box" id = '+participant+'>';
+          text+='<div class="user" id = "user'+participant+'">user'+participant+'</div>';
           text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
           text+='<div class="chat-area">';
           text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter max="500" low="20" high="40" value="100">';
+          text+='<div class="meter" id = "meter'+participant+'"><meter max="500" low="20" high="40" value="100">';
           text+='</div>';
           text+='</div>';
           text+='</div>';
@@ -70,25 +77,31 @@
           updatemember();
         }
 
-        function changetext(id){
+        // 発言を変更（id:何番目の人．flag:表示内容）
+        function changetext(id,flag){
           var id = "text"+id;
-          var txt = "かわった"
+          var changed_txt = ""
+          if(flag ==1){
+            changed_txt = "しゃべりたい！！"
+          }else if(flag ==2){
+            changed_txt = "発言中です"
+          }else{
+            changed_txt = "…"
+          }
           console.log(document.getElementById(id));
-          // console.log(document.getElementsByClassName("chat-hukidashi").text)
-          // document.getElementById(id).getElementsByClassName("chat-hukidashi").innerHTML = txt;
-          $("id"+".chat-hukidashi").css('background-color', 'green');
+          document.getElementById(id).innerHTML=changed_txt;
           console.log("cahnge text")
         }
-        
-        function click(){
-          console.log("clicked")
-          changetext(1);
-        } 
-  
+
+        // meter の値を変える（id:何番目の人．meter_value:発話量の変化後）
+        function change_meter(id,meter_value){
+          var id = "meter"+id;
+          document.getElementById(id).value =(meter_value);
+          console.log(document.getElementById(id));
+        }
+       
       </script>
-   
-    <INPUT type="button" value="Test用ボタン" style="background:#FFFFFF" onClick="click()">
-    
+       
     <footer>
       <address>TeamA Bright Light</address>
       <address>KONICA MINOLTA Hackathon.</address>

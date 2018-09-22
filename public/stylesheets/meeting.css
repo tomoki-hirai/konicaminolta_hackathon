@@ -5,6 +5,10 @@ body{
   background-color: white;
 }
 
+.top{
+    margin-left:0px;
+}
+
 /*画像左側のチャット*/
 .chat-box {
     width: 100%;

@@ -2,9 +2,9 @@
 <html>
     <!-- script we made -->
     <script type="text/javascript" src="javascript/meeting_event.js"></script>
-    <script type="text/javascript" src="javascript/meeting_user_create.js"></script>
+    <!-- <script type="text/javascript" src="javascript/meeting_user.js"></script> -->
     <!-- socket io -->
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 
     <head>
@@ -28,13 +28,14 @@
         var amount='発話量';
         var confference ='現在会議中です';
         var participant =0;
-        var user_id=0;
 
         createtitle();
 
         create_user();
         create_user();
 
+        changetext(1);
+        
         function createtitle(){
           var top_div = document.getElementById("top");
           text=''
@@ -42,47 +43,51 @@
           text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
           top_div.innerHTML += text;
         }
+
+        function updatemember(){
+          var top_div = document.getElementById("top");
+          text=''
+          text+='<div class="now" id = "text">'+confference+'</div>';
+          text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
+          top_div.innerHTML = text;
+        }
   
-        function create_user(){
+        function create_user(){ 
           var message_div = document.getElementById("messages");
           text=''
-          text+='<div class="chat-box">';
+          text+='<div class="chat-box" id = '+participant+'>';
           text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
           text+='<div class="chat-area">';
-          text+='<div class="chat-hukidashi" id = "text">'+message+'</div>';
+          text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter max="100" low="20" high="40" value="100">';
+          text+='<div class="meter"><meter max="500" low="20" high="40" value="100">';
           text+='</div>';
           text+='</div>';
           text+='</div>';
           message_div.innerHTML += text;
-          num+=1;
-      }
+          console.log("user created");
+          participant+=1;
+          updatemember();
+        }
 
-      function update_user(){
-          message_div = document.getElementById("messages");
-          message='clicked';
-          text=''
-          text+='<div class="chat-box">';
-          text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
-          text+='<div class="chat-area">';
-          text+='<div class="chat-hukidashi" id = "text">'+message+'</div>';
-          text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter max="100" low="20" high="40" value="100">';
-          text+='</div>';
-          text+='</div>';
-          text+='</div>';
-          message_div.innerHTML = text;
-      }
-  
-      function yesno(){
-        update_user();
-      }
-  
+        function changetext(id){
+          var id = "text"+id;
+          var txt = "かわった"
+          console.log(document.getElementById(id));
+          // console.log(document.getElementsByClassName("chat-hukidashi").text)
+          // document.getElementById(id).getElementsByClassName("chat-hukidashi").innerHTML = txt;
+          $("id"+".chat-hukidashi").css('background-color', 'green');
+          console.log("cahnge text")
+        }
+        
+        function click(){
+          console.log("clicked")
+          changetext(1);
+        } 
   
       </script>
    
-    <INPUT type="button" value="No" style="background:#FFFFFF" onClick="yesno()">
+    <INPUT type="button" value="Test用ボタン" style="background:#FFFFFF" onClick="click()">
     
     <footer>
       <address>TeamA Bright Light</address>

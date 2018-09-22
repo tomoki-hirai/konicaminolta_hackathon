@@ -1,4 +1,4 @@
-function show_message(speak,want) {
+function show_message(id,speak,want) {
     // speak - 0:無言 1:発話中
     // want - 1:しゃべりたい
     var wantspeak =  0;

@@ -2,7 +2,10 @@
 /*************************************
 ******************ページ全体の設定************
 *****************************************/
-
+* {
+ margin: 0;
+ padding: 0;
+}
 body {
   margin:0px;          /* ページ全体のmargin */
   padding:0px;         /* ページ全体のpadding */
@@ -21,12 +24,11 @@ body {
     width: 100%;
 }
 .site-logo {
-    font-size: 100%;
+    font-size: 200%;
     font-family: "Century Gothic";
     color: #fff;
     width: auto;
-    padding-top: -30px;
-    padding-bottom: -30px;
+    padding: 10px 10px 10px 10px
 }
 .head_bar{
   height: 20%;

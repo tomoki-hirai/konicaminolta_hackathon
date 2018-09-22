@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('konicaminolta-hackathon:server');
 var http = require('http');
+var constants = require('../module/constants');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,19 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+// socket.io
+constants.io = require('socket.io').listen(server);
+constants.io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('chat message', function(data) {
+    console.log(data)
+    // S06. server_to_clientイベント・データを送信する
+    // io.sockets.emit('chat message', {value : data});
+    // socket.broadcast.emit('msg', data);
+    socket.broadcast.emit('chat message', {value : data});
+  });
+});
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -4,7 +4,9 @@ if __name__ == '__main__':
     # url = "http://ec2-13-231-238-116.ap-northeast-1.compute.amazonaws.com:3000/meeting/speaking"
     # url = "http://localhost:3000/users"
     # url = "http://localhost:3000/meeting/myturn"
-    url = "http://localhost:3000/meeting/room"
+    # url = "http://localhost:3000/meeting/room"
+    url = "http://localhost:3000/meeting/speaking"
+
     method = "POST"
     headers = {"Content-Type" : "application/json"}
 

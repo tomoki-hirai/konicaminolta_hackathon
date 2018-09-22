@@ -43,6 +43,11 @@ router.get('/speaking', function(req, res, next) {
 });
 // メッセージをpost
 router.post('/speaking',function(req,res){
+  try{
+    constants.io.sockets.emit('speaking', req.body);
+  }catch(e){
+    console.log(e);
+  }
   // console.log(req);
   mongoose.connect(mongo_db_url,{ useNewUrlParser: true },function(err) {
     if (err) throw err;

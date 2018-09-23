@@ -11,6 +11,9 @@ var mongo_db_url = constants.mongo_db_url;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  mongoose.connect(mongo_db_url,{ useNewUrlParser: true },function(err) {
+    if (err) throw err;
+  });
   res.render('meeting', { title: 'Express' });
 });
 // 

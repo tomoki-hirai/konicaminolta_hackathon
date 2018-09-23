@@ -42,7 +42,6 @@
           console.log(msg.user_id);
           console.log(msg.user_name);
           create_user(msg.user_id,msg.user_name);
-          create_user(msg.value);
         });
 
         socket.on('myturn', function(msg){
@@ -101,7 +100,8 @@
           text=''
           text+='<div class="chat-box" id = '+user_id+'>';
           text+='<div class="user" id = "user'+user_id+'">'+name+'</div>';
-          text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+          // text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+          text+='<div class="chat-face"><img src="/images/users/'+user_id+'.jpg" alt="" /></div>';
           text+='<div class="chat-area">';
           text+='<div class="chat-hukidashi" id = "text'+user_id+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;

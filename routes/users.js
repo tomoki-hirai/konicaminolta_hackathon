@@ -36,6 +36,7 @@ router.get('/', function(req, res, next) {
 router.post('/',function(req,res){
   try{
     constants.io.sockets.emit('add_user', req.body);
+    console.log(req.body);
   }catch(e){
     console.log(e);
   }

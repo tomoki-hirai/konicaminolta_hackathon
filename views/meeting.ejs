@@ -54,7 +54,7 @@
         socket.on('speaking', function(msg){
           console.log('speak_amount')
           change_text(msg.user_id,2);
-          var speaking =msg.start*5;
+          var speaking =msg.start*20;
           // if(speaking>500) speaking=500;
           console.log(speaking)
           change_meter(msg.user_id,speaking);
@@ -76,25 +76,6 @@
           top_div.innerHTML = text;
         }
 
-        // function create_user(){
-        //   var message_div = document.getElementById("messages");
-        //   text=''
-        //   text+='<div class="chat-box" id = '+participant+'>';
-        //   text+='<div class="user" id = "user'+participant+'">user'+participant+'</div>';
-        //   text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
-        //   text+='<div class="chat-area">';
-        //   text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
-        //   text+='<div class="speak-amount" id = "speak-amount">'+amount;
-        //   text+='<div class="meter"><meter id = "meter'+participant+'" max="500" low="20" high="40" value="100">';
-        //   text+='</div>';
-        //   text+='</div>';
-        //   text+='</div>';
-        //   message_div.innerHTML += text;
-        //   console.log("user created");
-        //   participant+=1;
-        //   updatemember();
-        // }
-
         function create_user(user_id,name){
           var message_div = document.getElementById("messages");
           text=''
@@ -105,7 +86,7 @@
           text+='<div class="chat-area">';
           text+='<div class="chat-hukidashi" id = "text'+user_id+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="100">';
+          text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="0">';
           text+='</div>';
           text+='</div>';
           text+='</div>';
@@ -121,18 +102,25 @@
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
-            changed_txt = "しゃべりたい！！"
-            $(id).css({"color": "red"});
+            changed_txt = "しゃべりたい！！";
+            // CSSのbackgroundColor属性を変えて背景を青くする
+            // document.getElementById('id').style.backgroundColor = "#BBCCDD";
+            // $('id').css("background-color","red");
+            changeRed(id);
           }else if(flag ==2){
             changed_txt = "発言中です"
+            changeNomal(id);
           }else{
             changed_txt = "…"
+            changeNomal(id);
           }
+          
           console.log(document.getElementById(id));
           document.getElementById(id).innerHTML=changed_txt;
           console.log("cahnge text")
         }
 
+  
         // meter の値を変える（id:何番目の人．meter_value:発話量の変化後）
         function change_meter(id,meter_value){
           var id = "meter"+id;
@@ -146,7 +134,18 @@
         // console.log('receive')
         // insertMessage(1,msg.value);
       // });
-       
+
+      function changeRed(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#ff0000';            //文字色を白にする
+        // obj.style.backgroundColor = '#ff0000';  //背景色を赤にする
+      } 
+      function changeNomal(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#000000';            //文字色を白にする
+        // obj.style.backgroundColor = '#D9F0FF';  //背景色を赤にする
+      }
+
       </script>
        
     <footer>

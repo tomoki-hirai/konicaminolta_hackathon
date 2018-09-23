@@ -34,8 +34,8 @@
         var socket = io();
 
         // createtitle();
-        create_user(5,"hirai");
-        create_user(2,"riku");
+        // create_user(5,"hirai");
+        // create_user(2,"riku");
 
         socket.on('add_user', function(msg){
           console.log('add_user');
@@ -47,7 +47,7 @@
         socket.on('myturn', function(msg){
           console.log('myturn');
           // console.log(msg.value);
-          change_text(2,1);
+          change_text(5,1);
         });
 
         socket.on('speaking', function(msg){
@@ -78,6 +78,9 @@
         }
 
         function create_user(user_id,name){
+          if(document.getElementById(user_id)!= null){
+            console.log("already exist!");
+          }else{
           var message_div = document.getElementById("messages");
           text=''
           text+='<div class="chat-box" id = '+user_id+'>';
@@ -98,27 +101,31 @@
           console.log("user created");
           participant+=1;
           updatemember();
+          }
         }
 
         // 発言を変更（id:何番目の人．flag:表示内容）
         function change_text(id,flag){
           console.log(id);
+          var old = id;
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
             changed_txt = "しゃべりたい！！";
             changeRed(id);
           }else if(flag ==2){
-            changed_txt = "発言中です"
+            changed_txt = "・talking・・"
             changeNomal(id);
+            setTimeout("change_text(old,3)",500);
           }else{
-            changed_txt = "…"
+            changed_txt = ""
             changeNomal(id);
           }
           
           console.log(document.getElementById(id));
           document.getElementById(id).innerHTML=changed_txt;
           console.log("cahnge text")
+          
         }
 
   

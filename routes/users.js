@@ -34,6 +34,11 @@ router.get('/', function(req, res, next) {
 });
 // メッセージをpost
 router.post('/',function(req,res){
+  try{
+    constants.io.sockets.emit('add_user', req.body);
+  }catch(e){
+    console.log(e);
+  }
   // console.log(req);
   mongoose.connect(mongo_db_url,{ useNewUrlParser: true },function(err) {
     if (err) throw err;

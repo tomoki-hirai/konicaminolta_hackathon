@@ -47,14 +47,15 @@
         socket.on('myturn', function(msg){
           console.log('myturn');
           // console.log(msg.value);
-       
           change_text(2,1);
         });
 
         socket.on('speaking', function(msg){
           console.log('speak_amount')
+          var id = "meter"+msg.user_id;
+          console.log(document.getElementById(id));
           change_text(msg.user_id,2);
-          var speaking =msg.start*5;
+          var speaking =msg.start;
           // if(speaking>500) speaking=500;
           console.log(speaking)
           change_meter(msg.user_id,speaking);
@@ -76,25 +77,6 @@
           top_div.innerHTML = text;
         }
 
-        // function create_user(){
-        //   var message_div = document.getElementById("messages");
-        //   text=''
-        //   text+='<div class="chat-box" id = '+participant+'>';
-        //   text+='<div class="user" id = "user'+participant+'">user'+participant+'</div>';
-        //   text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
-        //   text+='<div class="chat-area">';
-        //   text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
-        //   text+='<div class="speak-amount" id = "speak-amount">'+amount;
-        //   text+='<div class="meter"><meter id = "meter'+participant+'" max="500" low="20" high="40" value="100">';
-        //   text+='</div>';
-        //   text+='</div>';
-        //   text+='</div>';
-        //   message_div.innerHTML += text;
-        //   console.log("user created");
-        //   participant+=1;
-        //   updatemember();
-        // }
-
         function create_user(user_id,name){
           var message_div = document.getElementById("messages");
           text=''
@@ -105,7 +87,10 @@
           text+='<div class="chat-area">';
           text+='<div class="chat-hukidashi" id = "text'+user_id+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="100">';
+          //meterの場合
+          // text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="0">';
+          // progressの場合
+          text+='<div class="meter"><label ><progress class="meter-w" id = "meter'+user_id+'" value="0" max="100"><span>100</span>%</progress)</label >';
           text+='</div>';
           text+='</div>';
           text+='</div>';
@@ -121,22 +106,30 @@
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
-            changed_txt = "しゃべりたい！！"
-            $(id).css({"color": "red"});
+            changed_txt = "しゃべりたい！！";
+            changeRed(id);
           }else if(flag ==2){
             changed_txt = "発言中です"
+            changeNomal(id);
           }else{
             changed_txt = "…"
+            changeNomal(id);
           }
+          
           console.log(document.getElementById(id));
           document.getElementById(id).innerHTML=changed_txt;
           console.log("cahnge text")
         }
 
+  
         // meter の値を変える（id:何番目の人．meter_value:発話量の変化後）
         function change_meter(id,meter_value){
           var id = "meter"+id;
-          document.getElementById(id).value = document.getElementById(id).value + meter_value;
+          console.log(meter_value);
+          console.log(document.getElementById(id));
+          console.log(document.getElementById(id).value);
+          document.getElementById(id).value += 2;
+          // document.getElementById(id).value = document.getElementById(id).value + meter_value;
           console.log("change meter");
           console.log(document.getElementById(id));
         }
@@ -146,7 +139,18 @@
         // console.log('receive')
         // insertMessage(1,msg.value);
       // });
-       
+
+      function changeRed(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#ff0000';
+        obj.style.fontWeight="bold";
+        } 
+      function changeNomal(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#000000';
+        obj.style.fontWeight="normal";        
+      }
+
       </script>
        
     <footer>

@@ -11,9 +11,9 @@ var mongo_db_url = constants.mongo_db_url;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('meeting', { title: 'Express' });
+  res.render('meetingUI', { title: 'Express' });
 });
-// 
+//
 router.get('/speaking', function(req, res, next) {
   console.log(req.query);
   room_id = 0;
@@ -81,7 +81,7 @@ router.post('/myturn',function(req,res,err){
   // constants.socket.emit('myturn', {value : data});
 })
 
-// 
+//
 router.get('/room', function(req, res, next) {
   console.log(req.query);
   room_id = 0;

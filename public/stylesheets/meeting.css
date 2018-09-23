@@ -1,26 +1,42 @@
 /***********************************
 チャット風レイアウト
 ************************************/
-body{
-  background-color: white;
+ #messages{
+  background: #777777;
+ font-family: Arial;
+ width:1000px;
+ height:1000px;
+ margin-right: auto;
+ margin-left : auto;
 }
-
-.top{
-    margin-left:0px;
+.now{
+    font-size: 200%;
+      color: #fff;
+}
+.member{
+    font-size: 200%;
+      color: #fff;
 }
 
 /*画像左側のチャット*/
 .chat-box {
     width: 100%;
     height: auto;
-    overflow: hidden; 
-    margin-bottom: 20px;
+    overflow: hidden;
+}
+.user{
+  font-size: 200%;
+  font-family: "Comic Sans MS";
+  text-align: left;
+  margin-left:15px;
+  color: #fff;
 }
 .chat-face {
     float: left;
-    margin-right: -120px;
 }
 .chat-face img{
+float: left;
+margin-left:15px;
 　　width: 90px;
     height: 90px;
     border-radius: 30px;
@@ -28,38 +44,41 @@ body{
     box-shadow: 0 0 4px #ddd;
 }
 .chat-area {
-    width: 100%;
-    float: right;
-}
-.chat-hukidashi {
-    display: inline-block;
-    padding: 15px 20px;
-    
-    margin-top: 8px;
-    border-radius: 10px;
-    position: relative; 
-    background-color: #D9F0FF; 
-}
-.chat-hukidashi p{
-    margin-bottom: 0px;
-}
-.chat-hukidashi:after {
-    content: "";
-    position: absolute;
-    top: 35px; left: -10px;
-    margin-top: -10px;
-    display: block;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #D9F0FF transparent transparent;
+    float: left;
 }
 
-.speak-amount{
+
+div.chat-hukidashi {
+float: left;
+position: relative;
+display: inline-block;
+width:auto;
+margin-top:0px;
+margin-left:15px;
+padding: 8px 15px;
+/*margin-left: 40px;*/
+background: #FF0;
+border-radius: 20px;
+}
+div.chat-hukidashi:after {
+    content: "";
+    display: inline-block;
     position: absolute;
-    margin-bottom: 0px;
-    margin-left: 100px;
+    top: 25px;
+    left: -15px;
+    border: 8px solid transparent;
+    border-right: 18px solid #FF0;
+    -ms-transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+}
+
+.meter-w{
+  margin-top:10px;
+  margin-left:15px;
+  width:700px;
+  -moz-orient: vertical; /*← horizontalは横(デフォルト)*/
+   height: 50px;
 }
 
 /*スマホの時は画像を小さく*/

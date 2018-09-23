@@ -23,7 +23,7 @@ jQuery(function()
 {
     const roomName = getParam() //ルーム名
     var path="/meeting/speaking" //送り先
-    console.log("会議名:"+roomName)
+    console.log("ユーザ名:"+roomName)
     //JSON一覧とユーザー情報を取得しログ出力
     //sendinfo(roomName,path)
     document.getElementById('room_name').innerHTML = roomName;

@@ -26,38 +26,38 @@
     <div id = total_speak></div>
 
     <script>
-        var message='test';
+        var message='...';
         var amount='発話量';
         var confference ='現在会議中です';
         var participant =0;
 
         var socket = io();
 
-        createtitle();
-        create_user();
-        create_user();
-
-        change_text(1,1);
-        change_text(0,2);
-        change_meter(1,400);
-        create_user();
-        change_text(2,3);
+        // createtitle();
+        create_user(5,"hirai");
+        create_user(2,"riku");
 
         socket.on('add_user', function(msg){
-          console.log('add_user')
-          // create_user(msg.value);
+          console.log('add_user');
+          console.log(msg.user_id);
+          console.log(msg.user_name);
+          create_user(msg.user_id,msg.user_name);
+          create_user(msg.value);
         });
 
         socket.on('myturn', function(msg){
-          console.log('myturn')
-          change_text(msg.user_id,1);
+          console.log('myturn');
+          // console.log(msg.value);
+       
+          change_text(2,1);
         });
 
-        socket.on('spaeking', function(msg){
+        socket.on('speaking', function(msg){
           console.log('speak_amount')
           change_text(msg.user_id,2);
-          var speaking=msg.start*5;
-          if(speaking>500) speaking=500;
+          var speaking =msg.start*5;
+          // if(speaking>500) speaking=500;
+          console.log(speaking)
           change_meter(msg.user_id,speaking);
         });
 
@@ -77,16 +77,35 @@
           top_div.innerHTML = text;
         }
 
-        function create_user(){
+        // function create_user(){
+        //   var message_div = document.getElementById("messages");
+        //   text=''
+        //   text+='<div class="chat-box" id = '+participant+'>';
+        //   text+='<div class="user" id = "user'+participant+'">user'+participant+'</div>';
+        //   text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+        //   text+='<div class="chat-area">';
+        //   text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
+        //   text+='<div class="speak-amount" id = "speak-amount">'+amount;
+        //   text+='<div class="meter"><meter id = "meter'+participant+'" max="500" low="20" high="40" value="100">';
+        //   text+='</div>';
+        //   text+='</div>';
+        //   text+='</div>';
+        //   message_div.innerHTML += text;
+        //   console.log("user created");
+        //   participant+=1;
+        //   updatemember();
+        // }
+
+        function create_user(user_id,name){
           var message_div = document.getElementById("messages");
           text=''
-          text+='<div class="chat-box" id = '+participant+'>';
-          text+='<div class="user" id = "user'+participant+'">user'+participant+'</div>';
+          text+='<div class="chat-box" id = '+user_id+'>';
+          text+='<div class="user" id = "user'+user_id+'">'+name+'</div>';
           text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
           text+='<div class="chat-area">';
-          text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
+          text+='<div class="chat-hukidashi" id = "text'+user_id+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter"><meter id = "meter'+participant+'" max="500" low="20" high="40" value="100">';
+          text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="100">';
           text+='</div>';
           text+='</div>';
           text+='</div>';
@@ -98,6 +117,7 @@
 
         // 発言を変更（id:何番目の人．flag:表示内容）
         function change_text(id,flag){
+          console.log(id);
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
@@ -116,7 +136,7 @@
         // meter の値を変える（id:何番目の人．meter_value:発話量の変化後）
         function change_meter(id,meter_value){
           var id = "meter"+id;
-          document.getElementById(id).value = meter_value;
+          document.getElementById(id).value = document.getElementById(id).value + meter_value;
           console.log("change meter");
           console.log(document.getElementById(id));
         }

@@ -73,7 +73,7 @@
           text+='<div class="chat-area">';
           text+='<div class="chat-hukidashi" id = "text'+participant+'">'+message+'</div>';
           text+='<div class="speak-amount" id = "speak-amount">'+amount;
-          text+='<div class="meter" id = "meter'+participant+'"><meter max="500" low="20" high="40" value="100">';
+          text+='<div class="meter"><meter id = "meter'+participant+'" max="500" low="20" high="40" value="100">';
           text+='</div>';
           text+='</div>';
           text+='</div>';
@@ -89,6 +89,7 @@
           var changed_txt = ""
           if(flag ==1){
             changed_txt = "しゃべりたい！！"
+            $(id).css({"color": "red"});
           }else if(flag ==2){
             changed_txt = "発言中です"
           }else{

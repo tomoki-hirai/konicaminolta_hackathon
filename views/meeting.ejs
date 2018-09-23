@@ -27,7 +27,7 @@
 
     <script>
         var message='...';
-        var amount='発話量';
+        var amount='';
         var confference ='現在会議中です';
         var participant =0;
 
@@ -46,7 +46,7 @@
 
         socket.on('myturn', function(msg){
           console.log('myturn');
-          // console.log(msg.value);
+          console.log(msg);
           change_text(5,1);
         });
 
@@ -81,6 +81,8 @@
           if(document.getElementById(user_id)!= null){
             console.log("already exist!");
           }else{
+            console.log("user_id:"+user_id);
+            console.log("name:"+name);
           var message_div = document.getElementById("messages");
           text=''
           text+='<div class="chat-box" id = '+user_id+'>';
@@ -107,16 +109,14 @@
         // 発言を変更（id:何番目の人．flag:表示内容）
         function change_text(id,flag){
           console.log(id);
-          var old = id;
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
             changed_txt = "しゃべりたい！！";
             changeRed(id);
           }else if(flag ==2){
-            changed_txt = "・talking・・"
+            changed_txt = "・・・"
             changeNomal(id);
-            setTimeout("change_text(old,3)",500);
           }else{
             changed_txt = ""
             changeNomal(id);

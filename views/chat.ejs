@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/chat.css' />
+  </head>
+  <body>
+      <div id = messages></div>
+      <form action="">
+          <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    <!-- socket.ioをロードする -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      $('form').submit(function(){
+        message = $('#m').val()
+        // メッセージを送信する
+        socket.emit('chat message', message);
+        insertMessage(0,message);
+        return false;
+      });
+      // メッセージを受信する
+      socket.on('chat message', function(msg){
+        console.log('receive')
+        insertMessage(1,msg.value);
+      });
+
+      socket.on('myturn', function(msg){
+        console.log('myturn')
+        // insertMessage(1,msg.value);
+      });
+      socket.on('speaking', function(msg){
+        console.log('speaking')
+        console.log(msg)
+        // insertMessage(1,msg.value);
+      });
+      function insertMessage(id,message){
+        var message_div = document.getElementById("messages");
+        text=''
+        if(id==0){
+          // 自分
+          text+='<div class="chat-box">';
+          text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+          text+='<div class="chat-area">';
+          text+='<div class="chat-hukidashi" id = "text">'+message+'</div>';
+          text+='</div>';
+          text+='</div>';
+        }else{
+          // 他人
+          text+='<div class="chat-box2">';
+          text+='<div class="chat-face2"><img src="/images/chat/someone.png" alt="" /></div>';
+          text+='<div class="chat-area2">';
+          text+='<div class="chat-hukidashi2">'+message+'</div>';
+          text+='</div>';
+          text+='</div>';
+        }
+        message_div.innerHTML += text;
+      }
+    </script>
+  </body>
+</html>

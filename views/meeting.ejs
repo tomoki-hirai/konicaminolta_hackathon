@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>会議中</title>
+    <!-- script we made -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/getRoomName.js"></script>
+    <script type="text/javascript" src="javascript/meeting_event.js"></script>
+    <!-- <script type="text/javascript" src="javascript/meeting_user.js"></script> -->
+    <!-- socket io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='stylesheets/meeting.css' />
+  </head>
+
+    <header class="site-header">
+      <p id="room_name" class="site-logo"></p>
+    </header>
+    <body>
+
+    <!-- <text >会議名<%= title %>が進行中</text>
+    <p>現在 <%= title %>名が参加中</text> -->
+    <div id = top></div>
+    <div id = messages></div>
+    <div id = total_speak></div>
+
+    <script>
+        var message='...';
+        var amount='';
+        var confference ='現在会議中です';
+        var participant =0;
+
+        var socket = io();
+
+        // createtitle();
+        // create_user(5,"hirai");
+        // create_user(2,"riku");
+
+        socket.on('add_user', function(msg){
+          console.log('add_user');
+          console.log(msg.user_id);
+          console.log(msg.user_name);
+          create_user(msg.user_id,msg.user_name);
+        });
+
+        socket.on('myturn', function(msg){
+          console.log('myturn');
+          console.log(msg);
+          change_text(5,1);
+        });
+
+        socket.on('speaking', function(msg){
+          console.log('speak_amount')
+          var id = "meter"+msg.user_id;
+          console.log(document.getElementById(id));
+          change_text(msg.user_id,2);
+          var speaking =msg.start;
+          // if(speaking>500) speaking=500;
+          console.log(speaking)
+          change_meter(msg.user_id,speaking);
+        });
+
+        function createtitle(){
+          var top_div = document.getElementById("top");
+          text=''
+          text+='<div class="now" id = "text">'+confference+'</div>';
+          text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
+          top_div.innerHTML += text;
+        }
+
+        function updatemember(){
+          var top_div = document.getElementById("top");
+          text=''
+          text+='<div class="now" id = "text">'+confference+'</div>';
+          text+='<div class="member" id = "participant">現在'+participant+'名が参加しています</div>';
+          top_div.innerHTML = text;
+        }
+
+        function create_user(user_id,name){
+          if(document.getElementById(user_id)!= null){
+            console.log("already exist!");
+          }else{
+            console.log("user_id:"+user_id);
+            console.log("name:"+name);
+          var message_div = document.getElementById("messages");
+          text=''
+          text+='<div class="chat-box" id = '+user_id+'>';
+          text+='<div class="user" id = "user'+user_id+'">'+name+'</div>';
+          // text+='<div class="chat-face"><img src="/images/chat/my.png" alt="" /></div>';
+          text+='<div class="chat-face"><img src="/images/users/'+user_id+'.jpg" alt="" /></div>';
+          text+='<div class="chat-area">';
+          text+='<div class="chat-hukidashi" id = "text'+user_id+'">'+message+'</div>';
+          text+='<div class="speak-amount" id = "speak-amount">'+amount;
+          //meterの場合
+          // text+='<div class="meter"><meter id = "meter'+user_id+'" max="500" low="20" high="40" value="0">';
+          // progressの場合
+          text+='<div class="meter"><label ><progress class="meter-w" id = "meter'+user_id+'" value="0" max="100"><span>100</span>%</progress)</label >';
+          text+='</div>';
+          text+='</div>';
+          text+='</div>';
+          message_div.innerHTML += text;
+          console.log("user created");
+          participant+=1;
+          updatemember();
+          }
+        }
+
+        // 発言を変更（id:何番目の人．flag:表示内容）
+        function change_text(id,flag){
+          console.log(id);
+          var id = "text"+id;
+          var changed_txt = ""
+          if(flag ==1){
+            changed_txt = "しゃべりたい！！";
+            changeRed(id);
+          }else if(flag ==2){
+            changed_txt = "発言中"
+            changeNomal(id);
+          }else{
+            changed_txt = "..."
+            changeNomal(id);
+          }
+          
+          console.log(document.getElementById(id));
+          document.getElementById(id).innerHTML=changed_txt;
+          console.log("cahnge text")
+          
+        }
+
+  
+        // meter の値を変える（id:何番目の人．meter_value:発話量の変化後）
+        function change_meter(id,meter_value){
+          var id = "meter"+id;
+          console.log(meter_value);
+          console.log(document.getElementById(id));
+          console.log(document.getElementById(id).value);
+          document.getElementById(id).value += 2;
+          // document.getElementById(id).value = document.getElementById(id).value + meter_value;
+          console.log("change meter");
+          console.log(document.getElementById(id));
+        }
+
+        // // メッセージを受信する
+        // socket.on('chat message', function(msg){
+        // console.log('receive')
+        // insertMessage(1,msg.value);
+      // });
+
+      function changeRed(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#ff0000';
+        obj.style.fontWeight="bold";
+        } 
+      function changeNomal(idname){
+        var obj = document.getElementById(idname);
+        obj.style.color = '#000000';
+        obj.style.fontWeight="normal";        
+      }
+
+      </script>
+       
+    <footer>
+      <address>TeamA Bright Light</address>
+      <address>KONICA MINOLTA Hackathon.</address>
+    </footer>
+  </body>
+</html>

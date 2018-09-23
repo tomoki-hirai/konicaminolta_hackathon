@@ -37,16 +37,29 @@
         create_user();
         create_user();
 
-        changetext(1,1);
-        changetext(0,2);
+        change_text(1,1);
+        change_text(0,2);
         change_meter(1,400);
         create_user();
-        changetext(2,3);
+        change_text(2,3);
+
+        socket.on('add_user', function(msg){
+          console.log('add_user')
+          // create_user(msg.value);
+        });
 
         socket.on('myturn', function(msg){
           console.log('myturn')
-          changetext(0,1);
-      });
+          change_text(msg.user_id,1);
+        });
+
+        socket.on('spaeking', function(msg){
+          console.log('speak_amount')
+          change_text(msg.user_id,2);
+          var speaking=msg.start*5;
+          if(speaking>500) speaking=500;
+          change_meter(msg.user_id,speaking);
+        });
 
         function createtitle(){
           var top_div = document.getElementById("top");
@@ -84,7 +97,7 @@
         }
 
         // 発言を変更（id:何番目の人．flag:表示内容）
-        function changetext(id,flag){
+        function change_text(id,flag){
           var id = "text"+id;
           var changed_txt = ""
           if(flag ==1){
@@ -108,11 +121,11 @@
           console.log(document.getElementById(id));
         }
 
-        // メッセージを受信する
-        socket.on('chat message', function(msg){
-        console.log('receive')
-        insertMessage(1,msg.value);
-      });
+        // // メッセージを受信する
+        // socket.on('chat message', function(msg){
+        // console.log('receive')
+        // insertMessage(1,msg.value);
+      // });
        
       </script>
        
